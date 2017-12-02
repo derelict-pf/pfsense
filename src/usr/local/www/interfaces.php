@@ -1871,7 +1871,7 @@ $section->addInput(new Form_IpAddress(
 	'*IPv4 Address',
 	$pconfig['ipaddr'],
 	'V4'
-))->addMask('subnet', $pconfig['subnet'], 32);
+))->addMask('subnet', isset($pconfig['subnet']) ? $pconfig['subnet'] : 24, 32);
 
 $group = new Form_Group('IPv4 Upstream gateway');
 
@@ -1905,7 +1905,7 @@ $section->addInput(new Form_IpAddress(
 	'*IPv6 address',
 	$pconfig['ipaddrv6'],
 	'V6'
-))->addMask('subnetv6', $pconfig['subnetv6'], 128);
+))->addMask('subnetv6', isset($pconfig['subnetv6']) ? $pconfig['subnetv6'] : 64, 128);
 
 $section->addInput(new Form_Checkbox(
 	'ipv6usev4iface',
